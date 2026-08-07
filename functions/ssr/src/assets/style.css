@@ -1,6 +1,42 @@
-html {
-  scroll-behavior: smooth;
+/*
+ * Design system da variante Lapidar (joias e semijoias).
+ * Referência de mercado: vitrine de joalheria — editorial, não catálogo.
+ *
+ * ── ESTA É A VARIANTE QUE QUEBRA O PADRÃO DO CONJUNTO ────────────────────
+ * As outras treze são densas em algum grau, e todas põem o título em CAIXA
+ * ALTA numa grotesca. Aqui:
+ *
+ *   - o título é SERIFADA de alto contraste, em caixa normal;
+ *   - não há uppercase em texto de leitura, só em rótulo curto;
+ *   - o card não tem borda nem sombra — o que separa um produto do outro é
+ *     espaço, não moldura;
+ *   - o respiro entre seções é o dobro do padrão.
+ *
+ * Isso não é preferência: é o argumento de que a plataforma não impõe um
+ * ritmo visual único. Se a Lapidar ficar parecida com as demais, ela perdeu
+ * a razão de existir.
+ *
+ * ATENÇÃO — `customCode.css` do CMS não funciona hoje (o `<style>` do
+ * `Base.astro` no pacote não interpola a expressão). Fontes definidas aqui.
+ */
+
+:root {
+  --custom-font-sans: 'Jost';
+  --font-brand: 'Cormorant Garamond', Georgia, serif;
 }
+
+/*
+ * `html:root` e não `:root`: este arquivo é importado ANTES de `uno.css` em
+ * `layouts/Base.astro`, então o `--c-background: #fff` do `assets/base.css` do
+ * pacote viria depois e ganharia no desempate por ordem. A especificidade a
+ * mais tira a dúvida. Branco puro esfria o dourado; o off-white quente é o
+ * que faz o metal ler como ouro.
+ */
+html:root {
+  --c-background: #faf8f5;
+}
+
+html { scroll-behavior: smooth; }
 body {
   overflow-x: hidden;
   overflow-y: scroll;
@@ -16,72 +52,80 @@ a, button, button > *, [role=button], [role=button] > * {
 }
 
 .ui-link {
-  @apply font-medium text-primary underline underline-offset-4
-  hover:text-primary-bold active:text-primary-subtle;
+  @apply font-medium text-base-900 underline underline-offset-4
+  decoration-secondary hover:text-secondary;
 }
 
+/*
+ * Botão de traço fino e caixa alta espaçada — o oposto do botão sólido gordo
+ * das variantes de catálogo. O peso vem do espacejamento, não da tinta.
+ */
 [class*=ui-btn] {
-  @apply inline-block text-base font-medium px-4 py-2 rounded
-  border-2 border-transparent underline-offset-4 decoration-2
-  shadow focus:ring-1 focus:ring-offset-1 active:ring-2;
+  @apply inline-block text-xs font-medium uppercase tracking-[0.18em]
+  px-7 py-3 rounded-none border
+  focus:ring-1 focus:ring-offset-2 active:ring-1;
 }
-.ui-btn-sm {
-  @apply text-sm px-3 py-1.5 border-1;
-}
-.ui-btn-lg {
-  @apply text-lg font-bold px-6 py-3 lg:text-base lg:py-2.5 active:ring-3;
-}
+.ui-btn-sm { @apply text-[0.6875rem] px-5 py-2 tracking-[0.14em]; }
+.ui-btn-lg { @apply text-sm px-10 py-4; }
 .ui-btn-primary {
-  @apply primary border-primary hover:primary-bold ring-primary/30;
+  @apply bg-base-900 text-base-50 border-base-900
+  hover:bg-secondary hover:border-secondary ring-base-900/20;
 }
 .ui-btn-secondary {
-  @apply bg-secondary-100/50 text-secondary border-secondary
-  hover:secondary ring-secondary/30;
+  @apply bg-transparent text-base-900 border-base-400
+  hover:border-base-900 ring-base-400/20;
 }
 .ui-btn-contrast {
-  @apply bg-white text-primary hover:bg-primary-100 ring-white/30
-  decoration-primary-300 underline shadow-none;
+  @apply bg-base-50 text-base-900 border-base-50
+  hover:bg-white ring-white/40 shadow-none;
 }
 .ui-btn-danger {
-  @apply bg-danger-50 text-danger-700 border-danger-100
-  hover:bg-danger-600 hover:text-white
-  hover:border-danger-600 ring-danger-600/30;
+  @apply bg-transparent text-danger-700 border-danger-300
+  hover:bg-danger-600 hover:text-white hover:border-danger-600 ring-danger-600/20;
 }
 
+/*
+ * Serifada em CAIXA NORMAL. É o desvio mais visível do conjunto — todas as
+ * outras variantes fazem `uppercase` aqui. `font-light` porque uma serifada
+ * de alto contraste em corpo grande já pesa sozinha.
+ */
 .ui-text-brand, .ui-title {
-  @apply font-brand font-black italic;
+  @apply font-brand font-light not-italic normal-case;
 }
 .ui-title {
-  @apply text-3xl xl:text-5xl text-balance;
+  @apply text-4xl xl:text-6xl leading-[1.06] tracking-[-0.01em] text-balance
+  text-base-900;
+}
+
+/* Rótulo de material — ouro 18k, prata 925, banhado. É o dado que separa joia
+   de bijuteria, então tem tipo próprio em vez de virar mais uma linha de spec. */
+.ui-material {
+  @apply inline-block text-[0.6875rem] font-medium uppercase tracking-[0.16em]
+  text-base-500;
 }
 
 [class*=ui-badge] {
-  @apply text-center px-2.5 py-0.5 rounded-md font-semibold
-  inline-block bg-secondary-200 text-secondary-900;
+  @apply text-center px-2.5 py-0.5 rounded-none text-[0.6875rem] font-medium
+  uppercase tracking-[0.12em] inline-block bg-secondary text-white;
 }
-[class*=ui-badge-pill] {
-  @apply text-sm leading-relaxed py-0 rounded-full;
-}
-.ui-badge-pill-sm {
-  @apply text-xs min-w-[1rem] px-0.5;
-}
-.ui-badge-pill-lg {
-  @apply text-lg min-w-[1.75rem] px-2;
-}
+[class*=ui-badge-pill] { @apply text-sm leading-relaxed py-0 rounded-full tracking-normal; }
+.ui-badge-pill-sm { @apply text-xs min-w-[1rem] px-0.5; }
+.ui-badge-pill-lg { @apply text-lg min-w-[1.75rem] px-2; }
 
 .ui-alert {
-  @apply bg-warning-100 text-warning-800 border-warning-200
-  border text-base rounded px-4 py-3;
+  @apply bg-base-100 text-base-800 border-base-300
+  border text-base rounded-none px-5 py-4;
 }
 
+/*
+ * Container mais ESTREITO que o das outras (76rem contra 84rem) e margem
+ * vertical dobrada. É onde o respiro do tema mora — mexer aqui é mexer no
+ * argumento da variante inteira.
+ */
 [class*=ui-section] {
-  @apply w-full mx-auto px-[1px] max-w-[calc(100vw-2rem)]
-  sm:max-w-[calc(100vw-3rem)] md:max-w-[calc(100vw-4rem)]
-  xl:max-w-[min(80rem,calc(100vw-6rem))];
+  @apply w-full mx-auto px-[1px] max-w-[calc(100vw-2.5rem)]
+  sm:max-w-[calc(100vw-4rem)] md:max-w-[calc(100vw-6rem)]
+  xl:max-w-[min(76rem,calc(100vw-8rem))];
 }
-.ui-section {
-  @apply my-6 md:my-8;
-}
-.ui-section-slim {
-  @apply my-3;
-}
+.ui-section { @apply my-10 md:my-16; }
+.ui-section-slim { @apply my-4; }

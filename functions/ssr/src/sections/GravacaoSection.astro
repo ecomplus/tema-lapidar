@@ -1,0 +1,87 @@
+---
+/*
+  GRAVAÇÃO SOB ENCOMENDA — a seção que justifica esta variante existir.
+
+  Em joalheria a personalização não é um extra: é boa parte da razão de a
+  compra acontecer ali e não num marketplace. Aliança sem gravação é
+  commodity; com o nome e a data ela deixa de ser comparável por preço.
+
+  A seção existe para dizer isso ANTES do carrinho, porque gravação muda prazo
+  e muda política de troca — descobrir isso no checkout é onde a venda cai.
+
+  ── FORMA, E POR QUE ELA É ASSIM ─────────────────────────────────────────
+  Três passos numa linha, sem caixa, sem ícone preenchido, sem cor de destaque.
+  O contraste vem do filete e do número em serifada grande. Toda outra variante
+  do conjunto resolveria isso com três cards sombreados — e é exatamente o que
+  esta não pode fazer: a Lapidar existe para provar que a plataforma comporta
+  um layout que respira. Ver o cabeçalho de `assets/style.css`.
+
+  Texto sem número de prazo de propósito: prazo de gravação varia por peça e
+  por época do ano, e um número chumbado num template envelhece calado. A
+  página `/p/gravacao` é quem carrega o detalhe.
+*/
+import type { CmsFields, InferCmsOutput } from '@@sf/content';
+
+export const cmsFields = ({
+  title: {
+    widget: 'string',
+    label: { pt: 'Título', en: 'Title' },
+  },
+}) as const satisfies CmsFields;
+
+export type Props = InferCmsOutput<typeof cmsFields>;
+const { title = 'Gravação sob encomenda' } = Astro.props;
+
+const passos = [
+  {
+    numero: '01',
+    titulo: 'Escolha a peça',
+    texto: 'Anéis, alianças e pingentes lisos aceitam gravação. O anúncio diz quando aceita.',
+  },
+  {
+    numero: '02',
+    titulo: 'Escreva o que vai gravado',
+    texto: 'Nome, data ou coordenada. O limite de caracteres muda com a largura do aro.',
+  },
+  {
+    numero: '03',
+    titulo: 'Confira a prova',
+    texto: 'Você aprova o desenho antes de a peça ir para a bancada. Só então ela é gravada.',
+  },
+];
+---
+
+<section class="ui-section">
+  <div class="border-y border-base-300 py-12 md:py-16">
+    <div class="mx-auto max-w-2xl text-center">
+      <h2 class="ui-title text-3xl xl:text-4xl">{title}</h2>
+      <p class="mx-auto mt-4 max-w-lg text-base leading-relaxed text-base-600">
+        Peça gravada é feita para uma pessoa só. Por isso ela sai da bancada
+        depois do pedido — e por isso o prazo e a troca seguem regra própria.
+      </p>
+    </div>
+
+    <ol class="mt-12 grid gap-10 md:grid-cols-3 md:gap-8">
+      {passos.map(({ numero, titulo, texto }) => (
+        <li class="text-center md:text-left">
+          <span class="ui-text-brand block text-4xl leading-none text-secondary">
+            {numero}
+          </span>
+          <h3 class="ui-text-brand mt-3 text-xl leading-snug text-base-900">
+            {titulo}
+          </h3>
+          <p class="mx-auto mt-2 max-w-xs text-sm leading-relaxed text-base-600
+            md:mx-0">
+            {texto}
+          </p>
+        </li>
+      ))}
+    </ol>
+
+    <div class="mt-12 text-center">
+      <a href="/p/gravacao" class="ui-btn ui-btn-secondary">
+        Prazos e limites de caractere
+      </a>
+    </div>
+  </div>
+</section>

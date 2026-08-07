@@ -1,0 +1,30 @@
+<!--
+  Wordmark placeholder da variante "Lapidar" (joias) — FONTE EDITÁVEL.
+  A loja serve o PNG gerado daqui: o `Picture` do storefront passa a imagem
+  pelo serviço de imagem do Astro, que rejeita `svg+xml`.
+
+  Regerar após editar:
+    cd .../public/img/uploads
+    node /home/vitorrgg/demo-catalog/scripts/rasterize.mjs \
+      /home/vitorrgg/store-lapidar/functions/ssr \
+      logo-lapidar.svg logo-lapidar.png 1200
+
+  Gema lapidada em traço fino, sem preenchimento. É o único wordmark do
+  conjunto em serifada e em caixa normal com espacejamento aberto — mesma
+  lógica do `.ui-title` do tema: peso vem do espaço, não da tinta.
+
+  Fontes são as instaladas no ambiente que rasteriza (DejaVu/Ubuntu).
+-->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 72" width="300" height="72" role="img" aria-label="Lapidar">
+  <!-- gema: coroa, cintura e pavilhão -->
+  <g stroke="#b08d3f" stroke-width="1.6" stroke-linejoin="round" fill="none">
+    <path d="M18 30l7-9h18l7 9-16 22z" />
+    <path d="M18 30h32" />
+    <path d="M25 21l9 9 9-9" />
+    <path d="M34 30v22" />
+  </g>
+  <!-- Linha de apoio em 10px: a 7,5 ela sumia no tamanho real do header
+       (`max-w-[210px]` encolhe a caixa de 300 unidades para ~0,7×). -->
+  <text x="68" y="40" font-family="DejaVu Serif, Georgia, serif" font-size="26" font-weight="400" fill="#25201c" letter-spacing="3">Lapidar</text>
+  <text x="70" y="57" font-family="DejaVu Sans, system-ui, sans-serif" font-size="10" fill="#84786a" letter-spacing="2.6">JOIAS E SEMIJOIAS</text>
+</svg>

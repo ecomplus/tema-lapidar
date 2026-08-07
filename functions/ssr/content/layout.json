@@ -6,35 +6,45 @@
   },
   "customCode": {
     "css": "",
-    "htmlHead": "",
+    "htmlHead": "<link rel=\"preconnect\" href=\"https://fonts.googleapis.com\"><link rel=\"preconnect\" href=\"https://fonts.gstatic.com\" crossorigin><link rel=\"stylesheet\" href=\"https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500&family=Jost:wght@300;400;500&display=swap\">",
     "htmlBody": ""
   },
   "header": {
     "pitchBar": [
       {
-        "href": "/promotion",
-        "html": "Aproveite nossos descontos de até 50%!"
+        "href": "/p/gravacao",
+        "html": "<b>Gravação sob encomenda</b> <d-md>em anéis, alianças e pingentes</d-md>"
+      },
+      {
+        "href": "/p/materiais",
+        "html": "<b>Material declarado</b> <d-md>ouro 18k, prata 925 ou banhado, escrito no anúncio</d-md>"
       },
       {
         "href": "",
-        "html": "<b>Frete grátis</b> <d-md>para todo Brasil</d-md> a partir de {free_shipping_from_value}"
+        "html": "<b>Frete grátis</b> <d-md>para todo o Brasil</d-md> a partir de {free_shipping_from_value}"
       }
     ],
     "inlineMenuCategories": {
-      "featured": [],
-      "random": 7
+      "featured": [
+        "aneis-e-aliancas",
+        "colares-e-brincos"
+      ],
+      "random": 0
     },
-    "isAlphabeticalSortSubmenu": false
+    "isAlphabeticalSortSubmenu": true
   },
   "footer": {
     "categoriesList": {
       "isActive": true,
-      "title": "",
-      "slugs": []
+      "title": "Coleções",
+      "slugs": [
+        "aneis-e-aliancas",
+        "colares-e-brincos"
+      ]
     },
     "pagesList": {
       "isActive": true,
-      "title": "",
+      "title": "Atendimento",
       "links": []
     },
     "stamps": [
