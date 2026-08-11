@@ -4,9 +4,15 @@ Cópia do starter [`ecomplus/store`](https://github.com/ecomplus/store)
 tematizada para **joalheria** — ouro 18k, prata 925 e banhados, com gravação
 sob encomenda.
 
-> **Este nicho ainda não existe no site institucional.** Não há marca em
-> `src/config/brands.ts` nem página em `/segmentos/`. O posicionamento foi
-> **proposto**, não portado. Nome, logo e domínio são placeholders.
+> **Página de segmento escrita; demo ainda NÃO publicada.**
+> `/segmentos/joias-e-semijoias` (Joias e semijoias) já existe em `www.e-com.plus`, na branch
+> `feature/beleza`, e aponta para `tema-lapidar.web.app` — que ainda responde
+> 404. **Publicar a demo antes de subir o site**, senão a página institucional
+> sai com link morto.
+>
+> Não há marca em `src/config/brands.ts`: aquele arquivo é a camada das
+> variantes `/demo/<slug>`, que é outra coisa. Nome, logo e domínio aqui são
+> placeholders.
 
 ## Por que este nicho: ele é o contraexemplo do conjunto
 
