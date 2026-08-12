@@ -33,7 +33,7 @@
   "sections": [
     {
       "type": "product-shelf",
-      "collectionIdAndInfo": null,
+      "collectionIdAndInfo": "6a7bca471b2a366caaeb32a6:categories:Anéis e alianças:/aneis-e-aliancas",
       "sort": "-sales",
       "title": "Seleção da casa",
       "isHeadless": false,
@@ -73,7 +73,7 @@
     },
     {
       "type": "product-shelf",
-      "collectionIdAndInfo": null,
+      "collectionIdAndInfo": "6a7bca4a1b2a366caaeb32c0:categories:Colares e brincos:/colares-e-brincos",
       "sort": "-price_discount",
       "title": "Últimas peças",
       "isHeadless": false,
